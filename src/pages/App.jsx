@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import axios from 'axios';
 import ShowData from '../components/ShowData';
+import styles from '../index.module.scss';
+
 
 const App = () => {
 
@@ -48,8 +50,8 @@ const App = () => {
 
   return (
     <>
-    <nav>
-        <h1>Star Wars</h1>
+      <nav className={styles.navBar}>
+        <h1>Star Wars Api</h1>
         <form onSubmit={handleSubmit}>
           <label htmlFor="category">Search for:
             <select onChange={handleChange} name="category" id="category" value={category}>
@@ -61,13 +63,17 @@ const App = () => {
               <option value="starships">Starships</option>
             </select>
           </label>
-          <label htmlFor="id">ID:
-            <input onChange={handleChange} type="text" name="id" id="id" value={id} />
-          </label>
-          <button type='submit'>Search</button>
+          <div>
+            <label htmlFor="id">ID:
+              <input onChange={handleChange} type="text" name="id" id="id" value={id} />
+            </label>
+            <button type='submit'>Search</button>
+          </div>
         </form>
-    </nav>
-    {showData && <ShowData category={category} loading={loading} data={dataState}/>}
+      </nav>
+      <div className={styles.container}>
+        {showData && <ShowData category={category} loading={loading} data={dataState} />}
+      </div>
     </>
   )
 };

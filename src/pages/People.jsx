@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import ShowData from '../components/ShowData';
+import styles from '../index.module.scss';
 
 const People = () => {
     const { id } = useParams();
@@ -29,7 +30,9 @@ const People = () => {
     }, [id]);
 
     return (
-        <ShowData category="people" loading={loading} data={dataState}/>
+        <div className={styles.container}>
+            <ShowData category="people" loading={loading} data={dataState} />
+        </div>
     )
 }
 
